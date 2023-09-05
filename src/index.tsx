@@ -4,17 +4,33 @@ import './index.css';
 import App from './App';
 import { Server, Response } from "miragejs"
 import { nanoid } from 'nanoid';
+import { UserInterface, WorkoutInterface } from './types/UserInterface';
 
-let usersArray = [
+let usersArray: UserInterface[] = [
   { 
     id: nanoid(), 
     name: "Felix", 
     password: "123",
+    role: "ADMIN",
+    booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Dennis", 
+    password: "123",
+    role: "ADMIN",
+    booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Jacke", 
+    password: "123",
+    role: "ADMIN",
     booked_workouts: []
   }
 ]
 
-let wokroutArray = [
+let wokroutArray: WorkoutInterface[] = [
   { id: nanoid(), 
     title: "Crossfit",
     trainer: "Gertrude Trainersson",
@@ -53,6 +69,20 @@ new Server({
       return { users: body }
     })
 
+    this.post("/users/booking", (schema, request) => {
+      let body = JSON.parse(request.requestBody)
+      const workout = wokroutArray.find((workout) => workout.id === body.workoutId)
+      
+      if(workout) {
+        const userIndex = usersArray.findIndex((user) => user.id === body.userId)
+        usersArray[userIndex].booked_workouts.push(workout)
+        return {user: usersArray[userIndex]}
+      } else {
+        return new Response(400, { some: 'header' }, { errors: [ 'something was not found'] })
+      }
+      
+    })
+
     this.get('/workouts', schema => {
       return {
         workouts: wokroutArray
@@ -71,7 +101,7 @@ new Server({
       const user = usersArray.find((user) => user.name === body.username && user.password === body.password)
       console.log(user)
       if(user) {
-        return { users: user}
+        return { user: user}
       } else {
         return new Response(400, { some: 'header' }, { errors: [ 'user was not found'] });
       }

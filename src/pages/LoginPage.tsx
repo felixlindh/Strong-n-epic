@@ -1,18 +1,22 @@
 import React, {useState} from 'react'
+import { Link, useNavigate } from "react-router-dom"
+import fetchOptions from '../service/fetchService'
+import {LoginInterface, UserInterface} from '../types/UserInterface'
 
-interface LoginInterface {
-    username: string,
-    password: string
-}
+
 
 const defaultValue: LoginInterface = {
     username: "",
     password: ""
 }
 
-export default function LoginPage() {
-    const [login, setLogin] = useState(defaultValue)
+type UserProps = {
+    setCurrentUser: React.Dispatch<React.SetStateAction<UserInterface>>
+}
 
+export default function LoginPage(props: UserProps) {
+    const [login, setLogin] = useState(defaultValue)
+    const navigate = useNavigate()
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
         setLogin((previnputValues) => {
@@ -25,18 +29,13 @@ export default function LoginPage() {
 
     async function handleLoginClick() {
         const BODY = login
-        const fetchOptions = {
-            method: "PUT",
-            body: JSON.stringify(BODY),
-            headers: {
-                "Content-Type": "application/json",
-              }
-        }
+        
 
-        const res = await fetch("api/login", fetchOptions)
+        const res = await fetch("api/login", fetchOptions<LoginInterface>("PUT", BODY))
         if(res.status !== 400) {
             const data = await res.json()
-            console.log(data)
+            props.setCurrentUser(data.user)
+            navigate("/home")
         } else {
             alert("User not found")
         }
@@ -48,14 +47,16 @@ export default function LoginPage() {
     <div className='login-wrapper'>
         <h1 className='login-title'>Strong n' Epic</h1>
         <div className='login-container'>
-        <label>Användarnamn</label>
+        <label>Username</label>
         <input name='username' type='text' value={login.username} onChange={handleChange}/>
 
-        <label htmlFor="">Lösenord</label>
+        <label htmlFor="">Password</label>
         <input name='password'  type='password' value={login.password} onChange={handleChange}/>
 
-        <button className='login-button' onClick={handleLoginClick}>Logga in</button>
+        <button className='login-button' onClick={handleLoginClick}>Login</button>
         </div>
+
+       <p className='link'>Don't have an account?<Link to={"/register"}> Sign up here</Link></p>
     </div>
   )
 }

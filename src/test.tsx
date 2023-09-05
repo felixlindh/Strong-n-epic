@@ -13,11 +13,9 @@ export default function Test() {
     }, [])
 
     async function postWorkout() {
-        const BODY = {  title: "Ny workout",
-            trainer: "Mr tränare",
-            date: new Date('2023-11-25T06:30').toDateString(),
-            startTime: new Date('2023-11-25T06:30').toLocaleTimeString(),
-            duration: 90
+        const BODY = { 
+           workoutId: "321",
+           userId: "123"
           }
 
         const fetchOptions = {
@@ -27,13 +25,9 @@ export default function Test() {
                 "Content-Type": "application/json",
               }
         }
-        const res = await fetch("api/workouts", fetchOptions)
+        const res = await fetch("api/users/booking", fetchOptions)
 
         console.log(res)
-
-        await fetch("api/workouts")
-        .then((res) => res.json())
-        .then((res) => console.log(res))
     }
 
     async function postUser() {

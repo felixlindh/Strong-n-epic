@@ -5,12 +5,14 @@
   font-family: 'Inknut Antiqua', serif;
 }
 
+
 .login-wrapper {
   background: url("../src/assets/login-background.jpg") no-repeat center center/cover;
   height: 100vh;
   color: white;
   padding: 2em;
   font-size: 0.8em;
+  position: relative;
 }
 
 .login-title {
@@ -32,7 +34,7 @@
 }
 
 .login-container > input {
-  padding: 0.3em;
+  padding: 0 0.3em;
   border-radius: 10px;
   border: none;
   box-shadow: 0px 2px 5px black;
@@ -45,4 +47,52 @@
   border-radius: 1em;
   margin-top: 1em;
   box-shadow: 0px 2px 5px black;
+}
+
+.link { 
+  position: absolute;
+  left: 0em;
+  right: 0em;
+  margin: 0 auto;
+  bottom: 2em;
+  text-align: center;
+}
+
+.home-wrapper {
+  background: url("../src/assets/homepage.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  padding: 2em 0;
+}
+
+.card {
+  background-color: #545f717a;
+  margin: 1em;
+  padding: 0.4em;
+  border-radius: 10px;
+  position: relative;
+}
+
+.book-workout {
+  background-color: rgb(34, 158, 34);
+  color: white;
+  padding: 0.1em 0.3em;
+  border-radius: 10px;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
+.workout-nav {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}
+
+.workout-nav > button {
+  width: 49%;
+  border: none;
 }

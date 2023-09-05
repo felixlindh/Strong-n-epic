@@ -1,0 +1,22 @@
+
+export interface LoginInterface {
+    username: string,
+    password: string
+}
+
+export interface UserInterface { 
+    id: string, 
+    name: string, 
+    password: string,
+    role: "ADMIN" | "USER",
+    booked_workouts: WorkoutInterface[]
+  }
+
+export interface WorkoutInterface {
+    id: string, 
+    title: string,
+    trainer: string,
+    date: string,
+    startTime: string,
+    duration: number
+}
