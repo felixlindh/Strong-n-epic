@@ -64,15 +64,26 @@
   min-height: 100vh;
   color: white;
   position: relative;
-  padding: 2em 0;
+  padding: 0.5em 0 2em 0;
+}
+
+.home-wrapper-booked {
+  background: url("../src/assets/homepage-booked.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  padding: 0.5em 0 2em 0;
 }
 
 .card {
-  background-color: #545f717a;
+  background-color: #545f71a6;
   margin: 1em;
   padding: 0.4em;
   border-radius: 10px;
   position: relative;
+  font-size: 0.8em;
+  text-shadow: 0 2px 10px black;
 }
 
 .book-workout {
@@ -95,4 +106,62 @@
 .workout-nav > button {
   width: 49%;
   border: none;
+}
+
+.error-msg {
+  color: red;
+  text-shadow: 0px 2px 5px black;
+}
+
+.active {
+  transition: 400ms;
+  background-color: rgb(34, 158, 34);
+  color: white;
+}
+
+.booked-status {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  text-shadow: 0px 2px 5px black;
+  box-shadow: 0 3px 8px black;
+  background-color: #545f714b;
+}
+
+.admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(34, 158, 34);
+}
+
+.red {
+  background-color: rgb(228, 53, 53);
+  color: white;
+}
+
+.delete-user-btn {
+  padding: 0.1em 0.3em;
+  border-radius: 10px;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
+.admin-wrapper {
+  background: url("../src/assets/adminPage.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  padding: 0.5em 0 2em 0;
+}
+
+.admin-title {
+  text-align: center;
 }

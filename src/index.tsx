@@ -25,7 +25,7 @@ let usersArray: UserInterface[] = [
     id: nanoid(), 
     name: "Jacke", 
     password: "123",
-    role: "ADMIN",
+    role: "USER",
     booked_workouts: []
   }
 ]
@@ -67,6 +67,28 @@ new Server({
       body.id = nanoid()
       usersArray.push(body)
       return { users: body }
+    })
+
+    this.delete("/users", (schema, request) => {
+      let body = JSON.parse(request.requestBody)
+
+      const userIndex = usersArray.findIndex((user) => user.id === body.userId)
+
+      usersArray.splice(userIndex, 1)
+
+      return {users: usersArray}
+
+    })
+
+    this.delete("/users/booking", (schema, request) => {
+      let body = JSON.parse(request.requestBody)
+      const userIndex = usersArray.findIndex((user) => user.id === body.userId)
+      const bookedIndex = usersArray[userIndex].booked_workouts.findIndex((workout) => workout.id === body.workoutId)
+      
+      usersArray[userIndex].booked_workouts.splice(bookedIndex, 1)
+
+      return {user: usersArray[userIndex]}
+      
     })
 
     this.post("/users/booking", (schema, request) => {

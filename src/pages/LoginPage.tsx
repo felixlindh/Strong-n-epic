@@ -12,6 +12,7 @@ const defaultValue: LoginInterface = {
 
 type UserProps = {
     setCurrentUser: React.Dispatch<React.SetStateAction<UserInterface>>
+    errorMsg?: string
 }
 
 export default function LoginPage(props: UserProps) {
@@ -55,6 +56,7 @@ export default function LoginPage(props: UserProps) {
 
         <button className='login-button' onClick={handleLoginClick}>Login</button>
         </div>
+        {props.errorMsg && <p className='error-msg'>{props.errorMsg}</p>}
 
        <p className='link'>Don't have an account?<Link to={"/register"}> Sign up here</Link></p>
     </div>
