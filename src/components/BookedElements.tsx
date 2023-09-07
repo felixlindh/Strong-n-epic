@@ -26,12 +26,15 @@ export default function BookedElements({currentUser, setCurrentUser}: BookedProp
 
     const bookedElements = currentUser.booked_workouts?.map((workout) => (
         <div className='card' key={workout.id}>
+            <div className='card-header'>  
             <h4>{workout.title}</h4>
+            <button onClick={() => cancelWorkout(workout.id)} className='book-workout red'>Cancel workout</button>
+            </div>
             <p>Trainer: {workout.trainer}</p>
             <p>Date: {workout.date}</p>
             <p>Time: {workout.startTime}</p>
             <p>Duration: {workout.duration} minutes</p>
-            <button onClick={() => cancelWorkout(workout.id)} className='book-workout red'>Cancel workout</button>
+           
         </div>
     ))
   return (<>{currentUser.booked_workouts.length > 0 ? bookedElements

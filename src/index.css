@@ -91,9 +91,15 @@
   color: white;
   padding: 0.1em 0.3em;
   border-radius: 10px;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.allready-booked {
+  color: rgb(250, 11, 11);
+  text-shadow: 0 2px 10px white;
 }
 
 .workout-nav {
@@ -140,10 +146,7 @@ header {
   color: rgb(34, 158, 34);
 }
 
-.red {
-  background-color: rgb(228, 53, 53);
-  color: white;
-}
+
 
 .delete-user-btn {
   padding: 0.1em 0.3em;
@@ -164,4 +167,65 @@ header {
 
 .admin-title {
   text-align: center;
+}
+
+.new-workout-card {
+  background-color: #546a91;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em 1em 1em;
+  position: fixed;
+  top: 3em;
+  left: 1em;
+  right: 1em;
+  gap: 0.3em;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.new-workout-card > input {
+  border-radius: 10px;
+  padding: 0 0.5em;
+}
+
+.add-workout-btn {
+  background-color: rgb(34, 158, 34);
+  color: white;
+  border-radius: 10px;
+}
+
+.toggle-add {
+ background-color: rgb(34, 158, 34);
+ color: white;
+ border-radius: 10px;
+ padding: 0 0.5em;
+ margin-left: 1em;
+}
+
+.x-icon {
+  align-self: flex-end;
+  color: black;
+}
+
+.new-workout-title {
+  align-self: center;
+}
+
+.red {
+  background-color: rgb(228, 53, 53);
+  color: white;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-btn {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
 }

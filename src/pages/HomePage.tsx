@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { UserInterface, WorkoutInterface } from '../types/UserInterface'
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import WorkoutElements from '../components/WorkoutElements'
 import BookedElements from '../components/BookedElements'
 import Header from '../components/Header'

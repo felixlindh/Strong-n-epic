@@ -34,22 +34,22 @@ let wokroutArray: WorkoutInterface[] = [
   { id: nanoid(), 
     title: "Crossfit",
     trainer: "Gertrude Trainersson",
-    date: new Date('2023-09-30T20:30').toDateString(),
-    startTime: new Date('2023-09-30T20:30').toLocaleTimeString(),
+    date: new Date('2023-09-30T20:30').toISOString().split("T")[0],
+    startTime: new Date('2023-09-30T20:30').toTimeString().substring(0, 5),
     duration: 60
   },
   { id: nanoid(), 
     title: "Bodybuilding",
     trainer: "Arnold Schwarzenegger",
-    date: new Date('2023-10-05T12:30').toDateString(),
-    startTime: new Date('2023-10-05T12:30').toLocaleTimeString(),
+    date: new Date('2023-10-05T12:30').toISOString().split("T")[0],
+    startTime: new Date('2023-10-05T12:30').toTimeString().substring(0, 5),
     duration: 120
   },
   { id: nanoid(), 
     title: "Yoga",
     trainer: "Yves Flexibel",
-    date: new Date('2023-11-25T06:30').toDateString(),
-    startTime: new Date('2023-11-25T06:30').toLocaleTimeString(),
+    date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
+    startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
     duration: 90
   }
 ]
@@ -113,9 +113,24 @@ new Server({
 
     this.post("/workouts", (schema, request) => {
       let body = JSON.parse(request.requestBody)
-      body.id = nanoid()
-      wokroutArray.push(body)
-      return { workouts: body }
+      if(body.id === "") {
+        body.id = nanoid()
+        wokroutArray.push(body)
+      } else {
+        const workoutIndex = wokroutArray.findIndex((workout) => workout.id === body.id)
+        wokroutArray[workoutIndex] = body
+      }
+      
+      return { workouts: wokroutArray }
+    })
+
+    this.delete("/workouts", (schema, request) => {
+      let body = JSON.parse(request.requestBody)
+
+      wokroutArray = wokroutArray.filter((workout) => workout.id !== body.workoutId)
+      
+      console.log(wokroutArray)
+      return {workouts: wokroutArray}
     })
 
     this.put("/login", (schema, request) => {

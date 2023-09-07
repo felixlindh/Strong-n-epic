@@ -30,8 +30,12 @@ export default function AdminUsers({users, setUsers}: AdminUsersProps) {
         const elements = array.map((workout) => {
             return <p>{workout.title} - {workout.date}</p>
         })
-
-        return elements
+        if(elements.length > 0) {
+            return elements
+        } else {
+            return <p>User has no workouts booked</p>
+        }
+        
     }
 
     const usersElements = users.map((user) => (

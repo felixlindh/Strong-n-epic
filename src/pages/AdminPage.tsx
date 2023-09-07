@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { UserInterface, WorkoutInterface } from '../types/UserInterface'
 import Header from '../components/Header'
 import AdminUsers from '../components/AdminUsers'
+import AdminWorkouts from '../components/AdminWorkouts'
 
 type AdminProps = {
     currentUser: UserInterface
@@ -46,6 +47,7 @@ export default function AdminPage({currentUser}: AdminProps) {
     <h3 className='admin-title'>AdminPage</h3>
 
     {!toggle && <AdminUsers setUsers={setUsers} users={users} />}
+    {toggle && <AdminWorkouts workouts={workouts} setWorkouts={setWorkouts} />}
     <div className='workout-nav'>
         <button className={!toggle ? "active" : ""} onClick={() => setToggle(false)}>Users</button> 
         <button className={toggle ? "active" : ""} onClick={() => setToggle(true)}>Workouts</button>

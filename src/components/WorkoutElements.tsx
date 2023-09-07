@@ -19,19 +19,33 @@ export default function WorkoutElements({workouts, currentUser, setCurrentUser}:
 
         const res = await fetch("/api/users/booking", fetchOptions("POST", BODY))
         const data = await res.json()
-        console.log(data.user.booked_workouts)
 
         setCurrentUser({...currentUser, booked_workouts: data.user.booked_workouts})
+        alert(`Successfully booked workout`)
+    }
+
+    function checkIfBooked(obj: WorkoutInterface){
+        const isBooked = currentUser.booked_workouts.some((workout) =>
+        workout.id === obj.id && workout.title === obj.title
+        )
+
+        return isBooked
     }
 
     const workoutElements = workouts.map((workout) => (
         <div className='card' key={workout.id}>
+            <div className='card-header'>
             <h4>{workout.title}</h4>
+            <button disabled={checkIfBooked(workout)} 
+            onClick={() => bookWorkout(workout.id)} 
+            className={checkIfBooked(workout) ? "book-workout disabled" : "book-workout"}>Book workout</button>
+            </div>
             <p>Trainer: {workout.trainer}</p>
             <p>Date: {workout.date}</p>
             <p>Time: {workout.startTime}</p>
             <p>Duration: {workout.duration} minutes</p>
-            <button onClick={() => bookWorkout(workout.id)} className='book-workout'>Book workout</button>
+            
+            {checkIfBooked(workout) ? <p className='allready-booked'>You have allready booked this workout</p> : false}
         </div>
     ))
   return (<>{workoutElements}</>)
