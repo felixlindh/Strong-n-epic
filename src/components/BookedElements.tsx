@@ -11,7 +11,6 @@ export default function BookedElements({currentUser, setCurrentUser}: BookedProp
 
 
     async function cancelWorkout(workoutId: string) {
-        console.log(workoutId)
         const BODY = {
             workoutId: workoutId,
             userId: currentUser.id

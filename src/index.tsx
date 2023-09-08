@@ -27,6 +27,34 @@ let usersArray: UserInterface[] = [
     password: "123",
     role: "USER",
     booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Greta", 
+    password: "123",
+    role: "USER",
+    booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Yves", 
+    password: "123",
+    role: "USER",
+    booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Harald", 
+    password: "123",
+    role: "USER",
+    booked_workouts: []
+  },
+  { 
+    id: nanoid(), 
+    name: "Olof", 
+    password: "123",
+    role: "USER",
+    booked_workouts: []
   }
 ]
 
@@ -51,6 +79,34 @@ let wokroutArray: WorkoutInterface[] = [
     date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
     startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
     duration: 90
+  },
+  { id: nanoid(), 
+    title: "Spinning",
+    trainer: "Greta Spinsson",
+    date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
+    startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
+    duration: 90
+  },
+  { id: nanoid(), 
+    title: "Karate",
+    trainer: "Chuck Norris",
+    date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
+    startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
+    duration: 90
+  },
+  { id: nanoid(), 
+    title: "Jogging",
+    trainer: "Usain Bolt",
+    date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
+    startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
+    duration: 90
+  },
+  { id: nanoid(), 
+    title: "Zumba",
+    trainer: "Zoey Zumbasson",
+    date: new Date('2023-11-25T06:30').toISOString().split("T")[0],
+    startTime: new Date('2023-11-25T06:30').toTimeString().substring(0, 5),
+    duration: 90
   }
 ]
 new Server({
@@ -62,11 +118,19 @@ new Server({
         users: usersArray
       }
     })
-    this.post("/users", (schema, request) => {
+    this.post("/register", (schema, request) => {
       let body = JSON.parse(request.requestBody)
-      body.id = nanoid()
-      usersArray.push(body)
-      return { users: body }
+      const user = usersArray.find((user) => user.name === body.name)
+      if(user) {
+        return new Response(400, { some: 'header' }, { errors: [ 'username is allready taken'] })
+      } else {
+        body.id = nanoid()
+        body.role = "ADMIN"
+        body.booked_workouts = []
+        usersArray.push(body)
+        return { user: body }
+      }
+      
     })
 
     this.delete("/users", (schema, request) => {
@@ -135,7 +199,7 @@ new Server({
 
     this.put("/login", (schema, request) => {
       let body = JSON.parse(request.requestBody)
-      const user = usersArray.find((user) => user.name === body.username && user.password === body.password)
+      const user = usersArray.find((user) => user.name === body.name && user.password === body.password)
       console.log(user)
       if(user) {
         return { user: user}

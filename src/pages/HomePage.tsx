@@ -31,14 +31,16 @@ useEffect(() => {
 
   return (
     <div className={!toggle ? 'home-wrapper' : 'home-wrapper-booked'}>
-        <Header username={currentUser.name} />
+        <Header username={currentUser.name} setCurrentUser={setCurrentUser} />
         {currentUser.role === "ADMIN" && <Link className='admin-link' to={"/admin"}>Admin page &#8594;</Link>}
      <div className='workout-nav'>
         <button className={!toggle ? "active" : ""} onClick={() => setToggle(false)}>Book Workouts</button> 
         <button className={toggle ? "active" : ""} onClick={() => setToggle(true)}>Your Workouts</button>
      </div>
+        <div className='grid-container'>
         {!toggle && <WorkoutElements workouts={workouts} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
         {toggle && <BookedElements currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+        </div>
     </div>
   )
 }

@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import fetchOptions from '../service/fetchService'
 import {LoginInterface, UserInterface} from '../types/UserInterface'
+import InputElements from '../components/InputElements'
 
 
 
 const defaultValue: LoginInterface = {
-    username: "",
+    name: "",
     password: ""
 }
 
@@ -18,6 +19,7 @@ type UserProps = {
 export default function LoginPage(props: UserProps) {
     const [login, setLogin] = useState(defaultValue)
     const navigate = useNavigate()
+
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
         setLogin((previnputValues) => {
@@ -47,15 +49,7 @@ export default function LoginPage(props: UserProps) {
   return (
     <div className='login-wrapper'>
         <h1 className='login-title'>Strong n' Epic</h1>
-        <div className='login-container'>
-        <label>Username</label>
-        <input name='username' type='text' value={login.username} onChange={handleChange}/>
-
-        <label htmlFor="">Password</label>
-        <input name='password'  type='password' value={login.password} onChange={handleChange}/>
-
-        <button className='login-button' onClick={handleLoginClick}>Login</button>
-        </div>
+        <InputElements stateValues={login} handleChange={handleChange} handleClick={handleLoginClick} />
         {props.errorMsg && <p className='error-msg'>{props.errorMsg}</p>}
 
        <p className='link'>Don't have an account?<Link to={"/register"}> Sign up here</Link></p>

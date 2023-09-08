@@ -5,9 +5,21 @@
   font-family: 'Inknut Antiqua', serif;
 }
 
+body {
+  background-color: brown;
+}
 
 .login-wrapper {
   background: url("../src/assets/login-background.jpg") no-repeat center center/cover;
+  height: 100vh;
+  color: white;
+  padding: 2em;
+  font-size: 0.8em;
+  position: relative;
+}
+
+.register-wrapper {
+  background: url("../src/assets/register.jpg") no-repeat center center/cover;
   height: 100vh;
   color: white;
   padding: 2em;
@@ -105,12 +117,12 @@
 .workout-nav {
   width: 100vw;
   position: fixed;
-  bottom: 0;
+  bottom: -0.2em;
   z-index: 10;
 }
 
 .workout-nav > button {
-  width: 49%;
+  width: 50%;
   border: none;
 }
 
@@ -163,6 +175,7 @@ header {
   color: white;
   position: relative;
   padding: 0.5em 0 2em 0;
+  margin: 0 auto;
 }
 
 .admin-title {
@@ -170,14 +183,16 @@ header {
 }
 
 .new-workout-card {
-  background-color: #546a91;
+  background-color: #45484d;
   display: flex;
   flex-direction: column;
   padding: 0 1em 1em 1em;
   position: fixed;
   top: 3em;
-  left: 1em;
-  right: 1em;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   gap: 0.3em;
   border-radius: 10px;
   border: 1px solid black;
@@ -199,7 +214,7 @@ header {
  color: white;
  border-radius: 10px;
  padding: 0 0.5em;
- margin-left: 1em;
+ margin-left: 6.5em;
 }
 
 .x-icon {
@@ -228,4 +243,91 @@ header {
   color: white;
   font-size: 2em;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.header-userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: rgb(228, 53, 53);
+  color: white;
+  padding: 0 1em;
+  border-radius: 10px;
+  margin-bottom: 0.3em;
+}
+
+.left-arrow {
+  font-size: 1.8em;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 992px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, max-content));
+    grid-gap: 1rem;
+    justify-content: center;
+    padding: initial;
+    align-items: start;
+  }
+  .new-workout-card {
+    max-width: 600px;
+  }
+
+  button:hover {
+    transition: 400ms;
+    cursor: pointer;
+    opacity: 0.9;
+    box-shadow: 0px 5px 10px black;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.6;
+  }
+  
+  .title-container {
+    justify-content: space-between;
+    padding: 0 3em;
+    font-size: 2em;
+  }
+
+  .card {
+    font-size: 1em;
+  }
+
+  .workout-nav {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    z-index: 0;
+  }
+
+  .left-arrow {
+    cursor: pointer;
+  }
+
+  .x-icon {
+    cursor: pointer;
+  }
+
+}
+
+
+@media screen and (min-width: 1700px) {
+  
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(23%, max-content));
+  }
+
+  
 }

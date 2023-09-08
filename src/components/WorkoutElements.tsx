@@ -36,6 +36,7 @@ export default function WorkoutElements({workouts, currentUser, setCurrentUser}:
         <div className='card' key={workout.id}>
             <div className='card-header'>
             <h4>{workout.title}</h4>
+            {checkIfBooked(workout)  && <p className='allready-booked'>BOOKED</p>}
             <button disabled={checkIfBooked(workout)} 
             onClick={() => bookWorkout(workout.id)} 
             className={checkIfBooked(workout) ? "book-workout disabled" : "book-workout"}>Book workout</button>
@@ -45,7 +46,6 @@ export default function WorkoutElements({workouts, currentUser, setCurrentUser}:
             <p>Time: {workout.startTime}</p>
             <p>Duration: {workout.duration} minutes</p>
             
-            {checkIfBooked(workout) ? <p className='allready-booked'>You have allready booked this workout</p> : false}
         </div>
     ))
   return (<>{workoutElements}</>)

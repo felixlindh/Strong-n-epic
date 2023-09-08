@@ -55,5 +55,5 @@ export default function AdminUsers({users, setUsers}: AdminUsersProps) {
             <button onClick={() => deleteUser(user.id)} className='delete-user-btn red' >Delete User</button>
         </div>
     ))
-  return (<>{usersElements}</>)
+  return (<div className='grid-container'>{usersElements}</div>)
 }

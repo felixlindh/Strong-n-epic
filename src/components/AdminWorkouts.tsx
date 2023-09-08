@@ -107,6 +107,8 @@ export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProp
 
   return (<>
   <button className='toggle-add' onClick={() => setToggle(true)}>Add new workout</button>
+  <div className='grid-container'>
   {workoutElements} 
+  </div>
   {toggle && addWorkoutElement}</>)
 }
