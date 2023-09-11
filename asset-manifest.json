@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.7e8a2436.css",
-    "main.js": "/react-gh-pages/static/js/main.2ea5a08f.js",
-    "static/media/adminPage.jpg": "/react-gh-pages/static/media/adminPage.22a476ff6aad8982b208.jpg",
-    "static/media/login.jpg": "/react-gh-pages/static/media/login.a203fbbf1708e8e11df0.jpg",
-    "static/media/homepage-booked.jpg": "/react-gh-pages/static/media/homepage-booked.cafd116b141d6fea601c.jpg",
-    "static/media/homepage.jpg": "/react-gh-pages/static/media/homepage.b1b214c0442b5972739d.jpg",
-    "static/media/register.jpg": "/react-gh-pages/static/media/register.4d87faa8ed6166c09999.jpg",
-    "index.html": "/react-gh-pages/index.html",
-    "main.7e8a2436.css.map": "/react-gh-pages/static/css/main.7e8a2436.css.map",
-    "main.2ea5a08f.js.map": "/react-gh-pages/static/js/main.2ea5a08f.js.map"
+    "main.css": "/Strong-n-epic/static/css/main.0cc39d5d.css",
+    "main.js": "/Strong-n-epic/static/js/main.2ea5a08f.js",
+    "static/media/adminPage.jpg": "/Strong-n-epic/static/media/adminPage.22a476ff6aad8982b208.jpg",
+    "static/media/login.jpg": "/Strong-n-epic/static/media/login.a203fbbf1708e8e11df0.jpg",
+    "static/media/homepage-booked.jpg": "/Strong-n-epic/static/media/homepage-booked.cafd116b141d6fea601c.jpg",
+    "static/media/homepage.jpg": "/Strong-n-epic/static/media/homepage.b1b214c0442b5972739d.jpg",
+    "static/media/register.jpg": "/Strong-n-epic/static/media/register.4d87faa8ed6166c09999.jpg",
+    "index.html": "/Strong-n-epic/index.html",
+    "main.0cc39d5d.css.map": "/Strong-n-epic/static/css/main.0cc39d5d.css.map",
+    "main.2ea5a08f.js.map": "/Strong-n-epic/static/js/main.2ea5a08f.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e8a2436.css",
+    "static/css/main.0cc39d5d.css",
     "static/js/main.2ea5a08f.js"
   ]
 }
