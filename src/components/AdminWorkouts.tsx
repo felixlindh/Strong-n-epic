@@ -17,11 +17,11 @@ const defaultValue: WorkoutInterface = {
 }
 
 
-export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProps) {
+export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProps): JSX.Element {
     const [toggle, setToggle] = useState(false)
     const [inputValues, setInputValues] = useState(defaultValue)
 
-    async function deleteWorkout(workoutId: string) {
+    async function deleteWorkout(workoutId: string): Promise<void> {
         const BODY = {
             workoutId: workoutId
         }
@@ -34,7 +34,7 @@ export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProp
         alert("Workout successfully deleted")
     }
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = event.target;
         setInputValues((previnputValues) => {
           return {
@@ -44,7 +44,7 @@ export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProp
         });
       }
 
-    async function addWorkout(event: React.FormEvent<HTMLFormElement>) {
+    async function addWorkout(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault()
 
         const res = await fetch("/api/workouts", fetchOptions("POST", inputValues))
@@ -56,7 +56,7 @@ export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProp
         setInputValues(defaultValue)
     }
 
-    function close() {
+    function close(): void {
         setInputValues(defaultValue)
         setToggle(false)
     }
@@ -86,12 +86,12 @@ export default function AdminWorkouts({workouts, setWorkouts}: AdminWorkoutsProp
         </form>
     )
 
-    function edit(workout: WorkoutInterface) {
+    function edit(workout: WorkoutInterface): void {
         setInputValues(workout)
         setToggle(true)
     }
 
-    const workoutElements = workouts.map((workout) => (
+    const workoutElements: JSX.Element[] = workouts.map((workout) => (
         <div className='card' key={workout.id}>
             <div className='card-header'>
             <h4>{workout.title}</h4> 

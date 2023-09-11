@@ -30,7 +30,7 @@ const defaultUsers: UserInterface[] = [{
 }]
 
 
-export default function AdminPage({currentUser, setCurrentUser}: AdminProps) {
+export default function AdminPage({currentUser, setCurrentUser}: AdminProps): JSX.Element {
     const navigate = useNavigate()
     const [users, setUsers] = useState(defaultUsers)
     const [workouts, setWorkouts] = useState(defaultWorkouts)

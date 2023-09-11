@@ -19,7 +19,7 @@ type CurrentUserProps = {
     setCurrentUser: React.Dispatch<React.SetStateAction<UserInterface>>
 }
 
-export default function HomePage({currentUser, setCurrentUser}: CurrentUserProps) {
+export default function HomePage({currentUser, setCurrentUser}: CurrentUserProps): JSX.Element {
 const [workouts, setWorkouts] = useState(defaultWorkouts)
 const [toggle, setToggle] = useState(false)
 useEffect(() => {

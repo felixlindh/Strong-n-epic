@@ -9,11 +9,11 @@ const defaultValue: LoginInterface = {
     password: ""
 }
 
-export default function Register() {
+export default function Register(): JSX.Element {
     const [login, setLogin] = useState(defaultValue)
     const navigate = useNavigate()
     
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = event.target;
         setLogin((previnputValues) => {
           return {
@@ -23,7 +23,7 @@ export default function Register() {
         });
       }
 
-    async function handleRegisterClick() {
+    async function handleRegisterClick(): Promise<void> {
         const BODY = login
         
 

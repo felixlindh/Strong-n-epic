@@ -8,7 +8,7 @@ type InputElementsProps = {
     handleClick: () => void 
 }
 
-export default function InputElements({stateValues, handleChange, handleClick}: InputElementsProps) {
+export default function InputElements({stateValues, handleChange, handleClick}: InputElementsProps): JSX.Element {
     const location = useLocation()
   return (
     <div className='login-container'>

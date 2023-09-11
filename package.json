@@ -1,7 +1,7 @@
 {
   "name": "strong-n-epic",
   "version": "0.1.0",
-  "homepage": "https://felixlindh.github.io/Strong-n-epic",
+  "homepage": "https://felixlindh.github.io",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

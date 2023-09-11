@@ -7,17 +7,17 @@ type AdminUsersProps = {
     setUsers: React.Dispatch<React.SetStateAction<UserInterface[]>>
 }
 
-export default function AdminUsers({users, setUsers}: AdminUsersProps) {
+export default function AdminUsers({users, setUsers}: AdminUsersProps): JSX.Element {
     const [toggle, setToggle] = useState({})
 
-    function toggleFunction(id: string) {
+    function toggleFunction(id: string): void {
         setToggle({
           ...toggle,
           [id]: !toggle[id as keyof typeof toggle],
         });
       }
 
-    async function deleteUser(userId: string) {
+    async function deleteUser(userId: string): Promise<void> {
         const BODY = {userId: userId}
         const res = await fetch("/api/users", fetchOptions("DELETE", BODY))
         const data = await res.json()
@@ -26,7 +26,7 @@ export default function AdminUsers({users, setUsers}: AdminUsersProps) {
         setUsers(data.users)
     }
 
-    function userBookings(array: WorkoutInterface[]) {
+    function userBookings(array: WorkoutInterface[]): JSX.Element | JSX.Element[] {
         const elements = array.map((workout) => {
             return <p>{workout.title} - {workout.date}</p>
         })
@@ -38,7 +38,7 @@ export default function AdminUsers({users, setUsers}: AdminUsersProps) {
         
     }
 
-    const usersElements = users.map((user) => (
+    const usersElements: JSX.Element[] = users.map((user) => (
         <div className='card' key={user.id}>
             <h4>Username: {user.name}</h4>
             <p>Id: {user.id}</p>

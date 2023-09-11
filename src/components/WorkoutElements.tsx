@@ -8,9 +8,9 @@ type WorkoutProps = {
     setCurrentUser: React.Dispatch<React.SetStateAction<UserInterface>>
 }
 
-export default function WorkoutElements({workouts, currentUser, setCurrentUser}: WorkoutProps) {
+export default function WorkoutElements({workouts, currentUser, setCurrentUser}: WorkoutProps): JSX.Element {
 
-    async function bookWorkout(workoutId: string) {
+    async function bookWorkout(workoutId: string): Promise<void> {
     
         const BODY = {
             workoutId: workoutId,
@@ -24,15 +24,15 @@ export default function WorkoutElements({workouts, currentUser, setCurrentUser}:
         alert(`Successfully booked workout`)
     }
 
-    function checkIfBooked(obj: WorkoutInterface){
+    function checkIfBooked(obj: WorkoutInterface): boolean{
         const isBooked = currentUser.booked_workouts.some((workout) =>
-        workout.id === obj.id && workout.title === obj.title
+        workout.id === obj.id
         )
 
         return isBooked
     }
 
-    const workoutElements = workouts.map((workout) => (
+    const workoutElements: JSX.Element[] = workouts.map((workout) => (
         <div className='card' key={workout.id}>
             <div className='card-header'>
             <h4>{workout.title}</h4>

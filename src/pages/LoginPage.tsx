@@ -16,7 +16,7 @@ type UserProps = {
     errorMsg?: string
 }
 
-export default function LoginPage(props: UserProps) {
+export default function LoginPage(props: UserProps): JSX.Element {
     const [login, setLogin] = useState(defaultValue)
     const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ export default function LoginPage(props: UserProps) {
         });
       }
 
-    async function handleLoginClick() {
+    async function handleLoginClick(): Promise<void> {
         const BODY = login
         
 
